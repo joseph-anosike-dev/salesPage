@@ -1,454 +1,436 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The 21-Day Real Estate Lead Engine helps independent agents turn online property searches into qualified enquiries, WhatsApp conversations and scheduled viewings.">
-  <title>21-Day Real Estate Lead Engine | Get Found. Get Trusted. Get Qualified Leads.</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To the independent agent who's tired of chasing "Is this still available?" — 21-Day Real Estate Lead Engine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-  <!-- Tailwind CSS is loaded for utility-first styling. No JavaScript libraries are used. -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
-          },
-          boxShadow: {
-            glow: '0 0 70px rgba(122,31,31,.20)'
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { background:#F7F4EF; color:#1A1A1A; }
-    .grid-bg {
-      background-image:
-        linear-gradient(rgba(26,26,26,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26,26,26,.05) 1px, transparent 1px);
-      background-size: 42px 42px;
-    }
-    .hero-glow {
-      background:
-        radial-gradient(circle at 20% 20%, rgba(122,31,31,.14), transparent 34%),
-        radial-gradient(circle at 85% 20%, rgba(184,146,62,.14), transparent 28%),
-        radial-gradient(circle at 50% 90%, rgba(122,31,31,.10), transparent 32%);
-    }
-    .gradient-text {
-      background: linear-gradient(100deg,#7A1F1F,#B8923E,#7A1F1F);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .glass { background:rgba(247,244,239,.78); backdrop-filter:blur(14px); border:1px solid rgba(26,26,26,.12); }
-    .lift { transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-    .lift:hover { transform:translateY(-4px); border-color:rgba(122,31,31,.42); box-shadow:0 18px 50px rgba(26,26,26,.16); }
-    .price-old { text-decoration-thickness:2px; text-decoration-color:#7A1F1F; }
-    .reveal { opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease; }
-    .reveal.is-visible { opacity:1; transform:none; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior:auto; }
-      .reveal { opacity:1; transform:none; transition:none; }
-      .lift { transition:none; }
-    }
-  </style>
+  :root{
+    --paper:      #F7F3EA;
+    --paper-dim:  #EFEADD;
+    --ink:        #1C1812;
+    --ink-soft:   #4A4437;
+    --red:        #7E2020;
+    --red-deep:   #5E1717;
+    --gold:       #B08A4E;
+    --gold-soft:  #D9C79A;
+    --max: 660px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ -webkit-text-size-adjust: 100%; }
+
+  body{
+    margin: 0;
+    background: var(--paper-dim);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet{
+    max-width: var(--max);
+    margin: 0 auto;
+    background: var(--paper);
+    padding: 64px 44px 96px;
+    border-left: 1px solid rgba(28,24,18,0.08);
+    border-right: 1px solid rgba(28,24,18,0.08);
+    position: relative;
+  }
+
+  .sheet::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 45%, var(--gold) 100%);
+    opacity: 0.85;
+  }
+
+  header.mast{
+    padding-top: 12px;
+    margin-bottom: 56px;
+  }
+
+  .mast .to-line{
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+    margin: 0 0 22px;
+  }
+
+  h1.headline{
+    font-family: "Fraunces", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(30px, 5vw, 42px);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+
+  .rule{
+    width: 64px;
+    height: 2px;
+    background: var(--red);
+    margin: 0 0 28px;
+    border-radius: 1px;
+  }
+
+  p{ margin: 0 0 20px; color: var(--ink); }
+  p.lede{ font-size: 19px; color: var(--ink-soft); }
+
+  h2{
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 1.3;
+    margin: 52px 0 20px;
+    color: var(--ink);
+  }
+
+  ul.plain{
+    margin: 0 0 24px;
+    padding-left: 0;
+    list-style: none;
+  }
+  ul.plain li{
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  ul.plain li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 7px;
+    height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+
+  .callout{
+    background: var(--paper-dim);
+    border-left: 3px solid var(--red);
+    padding: 22px 26px;
+    margin: 28px 0 32px;
+    border-radius: 2px;
+  }
+  .callout p{ margin: 0; color: var(--ink); }
+  .callout p + p{ margin-top: 12px; }
+
+  ol.stages{
+    counter-reset: stage;
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 32px;
+  }
+  ol.stages li{
+    counter-increment: stage;
+    position: relative;
+    padding: 18px 0 18px 58px;
+    border-bottom: 1px solid rgba(28,24,18,0.09);
+  }
+  ol.stages li:last-child{ border-bottom: none; }
+  ol.stages li::before{
+    content: counter(stage);
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fraunces", serif;
+    font-size: 15px;
+    color: var(--red-deep);
+  }
+  ol.stages .stage-name{
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 19px;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  ol.stages .stage-body{
+    color: var(--ink-soft);
+    font-size: 17px;
+  }
+
+  .pieces{
+    columns: 2;
+    column-gap: 32px;
+    margin: 0 0 28px;
+  }
+  .pieces li{
+    break-inside: avoid;
+    margin-bottom: 12px;
+    padding-left: 16px;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 16.5px;
+  }
+  .pieces li::before{
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  .price-block{
+    background: var(--ink);
+    color: var(--paper);
+    padding: 34px 30px;
+    border-radius: 3px;
+    margin: 30px 0 32px;
+  }
+  .price-block .was{
+    text-decoration: line-through;
+    opacity: 0.55;
+    font-size: 16px;
+  }
+  .price-block .now{
+    font-family: "Fraunces", serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--gold-soft);
+    margin: 6px 0 14px;
+  }
+  .price-block p{ color: rgba(247,243,234,0.85); margin-bottom: 0; }
+
+  blockquote{
+    margin: 32px 0;
+    padding-left: 22px;
+    border-left: 3px solid var(--gold);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 17.5px;
+  }
+
+  .cta{
+    display: inline-block;
+    background: var(--red);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 15px 28px;
+    border-radius: 3px;
+    border: 1px solid var(--red-deep);
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .cta:hover{ background: var(--red-deep); }
+  .cta:active{ transform: translateY(1px); }
+  .cta:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .cta-wrap{
+    text-align: center;
+    margin: 40px 0;
+  }
+  .cta-wrap .sub{
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .cta-inline{
+    color: var(--red-deep);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 3px;
+  }
+  .cta-inline:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .final{
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(28,24,18,0.12);
+  }
+
+  .signoff{
+    margin-top: 40px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 19px;
+  }
+
+  .ps{
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--ink-soft);
+    border-top: 1px dashed rgba(28,24,18,0.2);
+    padding-top: 20px;
+  }
+
+  .final-cta{
+    margin-top: 44px;
+    text-align: center;
+    padding: 40px 24px;
+    background: var(--paper-dim);
+    border: 1px solid var(--gold-soft);
+    border-radius: 4px;
+  }
+  .final-cta h2{ margin-top: 0; margin-bottom: 14px; font-size: 24px; }
+  .final-cta .count{
+    display: inline-block;
+    font-family: "Fraunces", serif;
+    color: var(--red-deep);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 560px){
+    .sheet{ padding: 44px 22px 72px; }
+    .pieces{ columns: 1; }
+    h1.headline{ font-size: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cta{ transition: none; }
+  }
+</style>
 </head>
+<body>
 
-<body class="font-sans antialiased">
-  <div class="min-h-screen grid-bg hero-glow">
-    <!-- NAV -->
-    <header class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 lg:px-8">
-      <a href="#top" class="font-bold tracking-tight text-[#1A1A1A]">Lead<span class="text-[#7A1F1F]">Engine</span></a>
-      <a href="#offer" class="hidden rounded-full border border-black/10 bg-black/5 px-4 py-2 text-sm font-semibold text-[#1A1A1A] transition hover:bg-black/10 sm:inline-flex">See the offer</a>
-    </header>
+<div class="sheet">
 
-    <main id="top">
-      <!-- HERO / ATTENTION -->
-      <section class="mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-28 lg:pt-20">
-        <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
-          <div class="reveal">
-            <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-[#B8923E]/30 bg-[#B8923E]/15 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#8A6A1F]">
-              <span class="h-1.5 w-1.5 rounded-full bg-[#B8923E]"></span>
-              Founding cohort · 5 slots
-            </div>
+  <header class="mast">
+    <p class="to-line">For Real Estate Consultants and Agencies who's tired of getting property enquiries that create work without creating enough qualified opportunities,</p>
+    <h1 class="headline">You don't need another website. You need a better path from property attention to a serious enquiry.</h1>
+    <div class="rule"></div>
+  </header>
 
-            <p class="mb-4 text-sm font-semibold uppercase tracking-[.2em] text-[#7A1F1F]">For independent real estate agents</p>
-            <h1 class="max-w-3xl text-4xl font-black leading-[1.04] tracking-tight sm:text-5xl lg:text-6xl">
-              Stop relying on random enquiries.
-              <span class="gradient-text">Build a system that turns property interest into qualified leads.</span>
-            </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-8 text-black/70">
-              The <strong class="text-[#1A1A1A]">21-Day Real Estate Lead Engine</strong> helps prospects find you, trust you, find the right property, qualify themselves and move toward a viewing — without adding another full-time marketing job to your plate.
-            </p>
+  <p class="lede">I don't have a portfolio of real estate clients yet. No case studies, no testimonials, and no story about helping an agent close a certain number of deals. If you check references before spending money — and you should — that's worth knowing.</p>
 
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#checkout" class="inline-flex items-center justify-center rounded-xl bg-[#7A1F1F] px-6 py-3.5 font-bold text-[#F7F4EF] shadow-glow transition hover:bg-[#8F2727]">
-                Get the Lead Engine <span class="ml-2">→</span>
-              </a>
-              <a href="#offer" class="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-6 py-3.5 font-bold text-[#1A1A1A] transition hover:bg-black/10">
-                See everything included
-              </a>
-            </div>
+  <p>So I'm not going to pretend I have results I haven't earned. What I can show you is the system itself: how it's structured, what each part is designed to do, and why the pieces fit together.</p>
 
-            <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-black/60">
-              <span>✓ Done-for-you setup</span>
-              <span>✓ Mobile-first</span>
-              <span>✓ WhatsApp-ready</span>
-              <span>✓ 21-day target launch</span>
-            </div>
-          </div>
+  <p>I built the 21-Day Real Estate Lead Engine around a simple problem: an agent can have good properties and still lose potential business because the journey from "I saw this property" to "I'm ready to talk to this agent" is scattered across listings, social posts, WhatsApp messages and manual follow-up.</p>
 
-          <!-- Lightweight visual: CSS/SVG, no large hero image -->
-          <div class="reveal" aria-label="Illustration of the lead journey">
-            <div class="relative mx-auto max-w-md">
-              <div class="absolute -inset-8 rounded-full bg-[#7A1F1F]/10 blur-3xl"></div>
-              <div class="glass relative rounded-3xl p-5 shadow-2xl">
-                <div class="mb-5 flex items-center justify-between">
-                  <div>
-                    <p class="text-xs uppercase tracking-wider text-black/50">Lead Engine</p>
-                    <p class="font-bold text-[#1A1A1A]">New qualified enquiry</p>
-                  </div>
-                  <span class="rounded-full bg-[#B8923E]/15 px-2.5 py-1 text-xs font-bold text-[#8A6A1F]">HOT LEAD</span>
-                </div>
-
-                <div class="space-y-3">
-                  <div class="rounded-2xl border border-black/10 bg-[#1A1A1A]/90 p-4">
-                    <div class="flex items-center gap-3">
-                      <div class="grid h-10 w-10 place-items-center rounded-xl bg-[#B8923E]/20 text-[#B8923E]">⌕</div>
-                      <div>
-                        <p class="text-sm font-semibold text-[#F7F4EF]">Found on Google</p>
-                        <p class="text-xs text-white/55">3-bedroom • Lekki</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mx-auto h-5 w-px bg-[#7A1F1F]/40"></div>
-                  <div class="rounded-2xl border border-black/10 bg-[#1A1A1A]/90 p-4">
-                    <div class="flex items-center gap-3">
-                      <div class="grid h-10 w-10 place-items-center rounded-xl bg-[#B8923E]/20 text-[#B8923E]">✓</div>
-                      <div>
-                        <p class="text-sm font-semibold text-[#F7F4EF]">Requirements captured</p>
-                        <p class="text-xs text-white/55">Budget • location • timeline</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mx-auto h-5 w-px bg-[#B8923E]/40"></div>
-                  <div class="rounded-2xl border border-[#7A1F1F]/25 bg-[#7A1F1F]/10 p-4">
-                    <div class="flex items-center gap-3">
-                      <div class="grid h-10 w-10 place-items-center rounded-xl bg-[#7A1F1F]/15 text-[#7A1F1F]">↗</div>
-                      <div>
-                        <p class="text-sm font-semibold text-[#1A1A1A]">WhatsApp handoff</p>
-                        <p class="text-xs text-black/60">Context travels with the enquiry</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mt-5 rounded-2xl bg-white p-4 text-[#1A1A1A]">
-                  <div class="flex items-center justify-between text-xs font-bold">
-                    <span>Viewing readiness</span><span>High</span>
-                  </div>
-                  <div class="mt-2 h-2 overflow-hidden rounded-full bg-black/10">
-                    <div class="h-full w-[84%] rounded-full bg-[#7A1F1F]"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- INTEREST / PROBLEM -->
-      <section class="border-y border-[#B8923E]/15 bg-[#1A1A1A] text-[#F7F4EF]">
-        <div class="mx-auto max-w-6xl px-5 py-14 lg:px-8">
-          <div class="reveal max-w-3xl">
-            <p class="text-sm font-bold uppercase tracking-[.2em] text-[#B8923E]">The problem</p>
-            <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Your property may be good. Your customer journey may be the leak.</h2>
-            <p class="mt-4 text-white/60">People can discover a property and still never become a useful conversation.</p>
-          </div>
-
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <div class="text-2xl">👀</div>
-              <h3 class="mt-4 font-bold">Attention gets lost</h3>
-              <p class="mt-2 text-sm leading-6 text-white/60">Listings disappear inside social feeds and scattered WhatsApp conversations.</p>
-            </article>
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <div class="text-2xl">💬</div>
-              <h3 class="mt-4 font-bold">Enquiries lack context</h3>
-              <p class="mt-2 text-sm leading-6 text-white/60">“Is this available?” tells you almost nothing about budget, needs or timing.</p>
-            </article>
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <div class="text-2xl">🚗</div>
-              <h3 class="mt-4 font-bold">Time gets wasted</h3>
-              <p class="mt-2 text-sm leading-6 text-white/60">Unqualified prospects create unnecessary calls, messages and viewing trips.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- DESIRE / MECHANISM -->
-      <section class="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
-        <div class="reveal text-center">
-          <p class="text-sm font-bold uppercase tracking-[.2em] text-[#8A6A1F]">The mechanism</p>
-          <h2 class="mx-auto mt-3 max-w-3xl text-3xl font-black tracking-tight sm:text-4xl">Get found → get trusted → get qualified → get the viewing.</h2>
-          <p class="mx-auto mt-4 max-w-2xl text-black/60">One connected system instead of a collection of disconnected marketing activities.</p>
-        </div>
-
-        <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="reveal rounded-2xl border border-[#7A1F1F]/20 bg-[#7A1F1F]/[.06] p-5">
-            <span class="text-xs font-bold text-[#7A1F1F]">01</span>
-            <h3 class="mt-3 font-bold">ATTRACT</h3>
-            <p class="mt-1 text-sm text-black/60">Search-ready pages that make your properties easier to discover.</p>
-          </div>
-          <div class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.08] p-5">
-            <span class="text-xs font-bold text-[#8A6A1F]">02</span>
-            <h3 class="mt-3 font-bold">TRUST</h3>
-            <p class="mt-1 text-sm text-black/60">A professional digital presence that answers “why you?”</p>
-          </div>
-          <div class="reveal rounded-2xl border border-[#7A1F1F]/20 bg-[#7A1F1F]/[.06] p-5">
-            <span class="text-xs font-bold text-[#7A1F1F]">03</span>
-            <h3 class="mt-3 font-bold">QUALIFY</h3>
-            <p class="mt-1 text-sm text-black/60">Capture budget, location, needs and timeline before the handoff.</p>
-          </div>
-          <div class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.08] p-5">
-            <span class="text-xs font-bold text-[#8A6A1F]">04</span>
-            <h3 class="mt-3 font-bold">CONVERT</h3>
-            <p class="mt-1 text-sm text-black/60">Move qualified prospects into WhatsApp, viewings and follow-up.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- OFFER STACK -->
-      <section id="offer" class="border-y border-[#B8923E]/15 bg-[#1A1A1A] text-[#F7F4EF]">
-        <div class="mx-auto max-w-6xl px-5 py-16 lg:px-8">
-          <div class="reveal">
-            <div class="flex flex-wrap items-end justify-between gap-5">
-              <div>
-                <p class="text-sm font-bold uppercase tracking-[.2em] text-[#B8923E]">The Grand Slam Offer</p>
-                <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Everything needed to turn property attention into action.</h2>
-              </div>
-              <div class="rounded-full border border-[#B8923E]/25 bg-[#B8923E]/15 px-4 py-2 text-sm font-bold text-[#B8923E]">21-day target launch</div>
-            </div>
-          </div>
-
-          <div class="mt-10 grid gap-4 md:grid-cols-2">
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 01</span><h3 class="mt-2 text-xl font-bold">Property Growth Website</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦150,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">The site itself: mobile-first structure, homepage, navigation and page flow built to move a visitor from "just looking" to enquiry, with clear CTAs at every step.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 02</span><h3 class="mt-2 text-xl font-bold">Search Visibility Foundation</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦75,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">Keyword-led site architecture, on-page SEO, local search setup, metadata and indexing — so the site is actually findable, not just live.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 03</span><h3 class="mt-2 text-xl font-bold">Trust Architecture</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦35,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">Agent profile, proof of past transactions, testimonials, FAQs and transparent process info — the content that answers "can I trust this person?" before they message.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 04</span><h3 class="mt-2 text-xl font-bold">Property Catalogue</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦100,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">The listings themselves: individual property pages with pricing, specs, media, location context, availability status and a direct enquiry path per listing.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 05</span><h3 class="mt-2 text-xl font-bold">Lead Qualification System</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦50,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">Captures budget, location, property type, requirements, purpose and timeline from an enquiry before the agent spends any time on it.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 06</span><h3 class="mt-2 text-xl font-bold">WhatsApp Conversion System</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦25,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">Hands the enquiry to the agent on WhatsApp with the property and the prospect's context already attached — no re-asking.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 07</span><h3 class="mt-2 text-xl font-bold">Viewing + Follow-Up Workflow</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦200,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">Handles what happens after qualification: viewing requests, confirmations, reminders, pipeline stages and follow-up prompts.</p>
-            </article>
-
-            <article class="lift reveal rounded-2xl border border-white/10 bg-white/[.035] p-6">
-              <div class="flex items-start justify-between gap-4">
-                <div><span class="text-xs font-bold text-[#B8923E]">CORE 08</span><h3 class="mt-2 text-xl font-bold">Analytics & Lead Attribution</h3></div>
-                <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-white/85">₦25,000</span>
-              </div>
-              <p class="mt-3 text-sm leading-6 text-white/60">Tracks traffic, search performance, property interest and enquiry volume, so decisions about what's working aren't guesses.</p>
-            </article>
-          </div>
-
-          <!-- BONUS STACK -->
-          <div class="mt-14">
-            <div class="reveal mb-6 flex items-center gap-3">
-              <span class="rounded-full bg-[#B8923E] px-3 py-1 text-xs font-black text-[#1A1A1A]">FREE BONUSES</span>
-              <span class="text-sm text-white/60">Included with the Lead Engine</span>
-            </div>
-
-            <div class="grid gap-4 md:grid-cols-3">
-              <article class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.10] p-5">
-                <h3 class="font-bold">Property Listing Conversion Kit</h3>
-                <p class="mt-2 text-sm text-white/60">Templates for listing copy, photo shot-lists and property info sheets — so every listing you post looks like it belongs to an agent people trust with a six-figure decision, not a rushed WhatsApp forward.</p>
-                <p class="mt-4 font-bold text-[#B8923E]"><span class="price-old text-white/45">₦10,000</span> <span class="ml-2">FREE</span></p>
-              </article>
-              <article class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.10] p-5">
-                <h3 class="font-bold">WhatsApp Lead Response Library</h3>
-                <p class="mt-2 text-sm text-white/60">Word-for-word scripts for every stage — first reply, qualifying questions, viewing follow-up, the "gone quiet" nudge — so you're never staring at a chat wondering what to say next, and fewer leads go cold from a slow or awkward reply.</p>
-                <p class="mt-4 font-bold text-[#B8923E]"><span class="price-old text-white/45">₦15,000</span> <span class="ml-2">FREE</span></p>
-              </article>
-              <article class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.10] p-5">
-                <h3 class="font-bold">Real Estate Trust Kit</h3>
-                <p class="mt-2 text-sm text-white/60">Ready-made profile copy, proof-of-transaction layout, review request wording and transparency page structure — the exact pieces that turn "never heard of this agent" into "this person clearly knows what they're doing."</p>
-                <p class="mt-4 font-bold text-[#B8923E]"><span class="price-old text-white/45">₦5,000</span> <span class="ml-2">FREE</span></p>
-              </article>
-              <article class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.10] p-5">
-                <h3 class="font-bold">Lead Qualification Blueprint</h3>
-                <p class="mt-2 text-sm text-white/60">The actual questions and decision logic behind the system, laid out so you understand exactly why a lead is or isn't worth your time — no more guessing which enquiries are serious.</p>
-                <p class="mt-4 font-bold text-[#B8923E]"><span class="price-old text-white/45">₦5,000</span> <span class="ml-2">FREE</span></p>
-              </article>
-              <article class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.10] p-5">
-                <h3 class="font-bold">Property SEO Quickstart</h3>
-                <p class="mt-2 text-sm text-white/60">A checklist, title formulas and local-page framework built specifically for property listings — the shortcuts that get your listings surfacing in search instead of buried under everyone else's.</p>
-                <p class="mt-4 font-bold text-[#B8923E]"><span class="price-old text-white/45">₦10,000</span> <span class="ml-2">FREE</span></p>
-              </article>
-              <article class="reveal rounded-2xl border border-[#B8923E]/25 bg-[#B8923E]/[.10] p-5">
-                <h3 class="font-bold">30-Day Follow-Up + Referral Kit</h3>
-                <p class="mt-2 text-sm text-white/60">A ready-made follow-up calendar, review-request prompts and referral scripts — so past clients keep sending you business long after the sale closes, instead of disappearing the moment the deal is done.</p>
-                <p class="mt-4 font-bold text-[#B8923E]"><span class="price-old text-white/45">₦15,000</span> <span class="ml-2">FREE</span></p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- VALUE ANCHOR -->
-      <section class="mx-auto max-w-6xl px-5 py-16 lg:px-8">
-        <div class="reveal overflow-hidden rounded-3xl border border-[#7A1F1F]/20 bg-gradient-to-br from-[#7A1F1F]/[.09] via-[#B8923E]/[.08] to-[#7A1F1F]/[.06] p-7 sm:p-10">
-          <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p class="text-sm font-bold uppercase tracking-[.2em] text-[#7A1F1F]">The value stack</p>
-              <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">You aren't buying a website.</h2>
-              <p class="mt-3 max-w-2xl text-black/70">You're getting the connected acquisition and conversion infrastructure around it.</p>
-
-              <div class="mt-7 space-y-3 text-sm text-black/70">
-                <div class="flex justify-between gap-5 border-b border-black/10 pb-3"><span>Core system</span><span class="font-bold text-[#1A1A1A]">₦660,000</span></div>
-                <div class="flex justify-between gap-5 border-b border-black/10 pb-3"><span>Free bonus stack</span><span class="font-bold text-[#1A1A1A]">₦60,000</span></div>
-                <div class="flex justify-between gap-5 pt-1"><span class="font-bold text-[#1A1A1A]">Estimated standalone value</span><span class="font-black text-2xl text-[#1A1A1A]">₦720,000</span></div>
-              </div>
-              <p class="mt-3 text-xs text-black/45">Component values are estimated standalone replacement values for offer positioning, not third-party market quotations.</p>
-            </div>
-
-            <div class="rounded-2xl border border-black/10 bg-[#1A1A1A] p-6 text-center sm:min-w-[290px]">
-              <p class="text-sm text-white/60">Founding cohort price</p>
-              <p class="mt-2 text-5xl font-black tracking-tight text-[#F7F4EF]">₦247,000</p>
-              <p class="mt-2 text-sm font-semibold text-[#B8923E]"> <s>₦720,000</s><span style="font-size: 1.5em;">(save ₦473,000)</span></p>
-              <a href="#checkout" class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#7A1F1F] px-5 py-3.5 font-bold text-[#F7F4EF] transition hover:bg-[#8F2727]">Claim a slot →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- GUARANTEE / SCARCITY -->
-      <section class="border-y border-[#B8923E]/15 bg-[#1A1A1A] text-[#F7F4EF]">
-        <div class="mx-auto max-w-6xl px-5 py-14 lg:px-8">
-          <div class="grid gap-5 md:grid-cols-3">
-            <article class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <div class="text-xl">🛡️</div>
-              <h3 class="mt-4 font-bold">Implementation Guarantee</h3>
-              <p class="mt-2 text-sm leading-6 text-white/60">If the agreed system isn't delivered within the agreed implementation period, we continue working at no additional implementation fee until the agreed scope is delivered.</p>
-            </article>
-            <article class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <div class="text-xl">⏳</div>
-              <h3 class="mt-4 font-bold">5-Agent Capacity</h3>
-              <p class="mt-2 text-sm leading-6 text-white/60">The founding implementation cycle is capped at five agents so each build gets hands-on setup rather than a mass-produced template.</p>
-            </article>
-            <article class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <div class="text-xl">🎁</div>
-              <h3 class="mt-4 font-bold">Founding Bonuses</h3>
-              <p class="mt-2 text-sm leading-6 text-white/60">The bonus stack is part of this founding offer and can be removed from future versions as the offer evolves.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section id="checkout" class="mx-auto max-w-5xl px-5 py-20 text-center lg:px-8 lg:py-28">
-        <div class="reveal">
-          <div class="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-[#7A1F1F]/20 bg-[#7A1F1F]/10 px-4 py-2 text-sm font-bold text-[#7A1F1F]">
-            <span class="h-2 w-2 animate-pulse rounded-full bg-[#7A1F1F]"></span>
-            5 founding slots · first come, first served
-          </div>
-          <h2 class="text-4xl font-black tracking-tight sm:text-5xl">Ready to stop chasing every enquiry manually?</h2>
-          <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-black/60">Get the 21-Day Real Estate Lead Engine and give your next prospect a clearer path from “I found a property” to “I’m ready to talk.”</p>
-
-          <div class="mx-auto mt-9 max-w-md rounded-3xl border border-[#7A1F1F]/20 bg-black/[.04] p-7">
-            <p class="text-sm text-black/60">Founding cohort</p>
-            <p class="mt-1 text-5xl font-black">₦247,000</p>
-            <p class="mt-2 text-sm font-semibold text-[#8A6A1F]">Estimated stacked value: ₦720,000</p>
-
-            <!-- Replace # with your actual payment/checkout URL. -->
-            <a id="paymentCta" href="#" class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#7A1F1F] px-6 py-4 text-base font-black text-[#F7F4EF] shadow-glow transition hover:bg-[#8F2727]">
-              Pay ₦247,000 & Claim Your Slot
-            </a>
-            <p class="mt-3 text-xs leading-5 text-black/45">Replace the CTA link with your payment processor or checkout page before publishing.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-black/10 px-5 py-8 text-center text-xs text-black/40">
-      <p>© <span id="year"></span> Lead Engine. Built for independent real estate agents.</p>
-    </footer>
+  <div class="cta-wrap">
+    <a class="cta" href="salespage.html" data-cta="early">See how the Lead Engine works</a>
+    <span class="sub">See the full offer before you decide.</span>
   </div>
 
-  <script>
-    // Lightweight UX: reveal-on-scroll + current year.
-    const revealItems = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+  <h2>Here's the gap.</h2>
 
-    revealItems.forEach((item, index) => {
-      item.style.transitionDelay = `${Math.min(index * 35, 180)}ms`;
-      observer.observe(item);
-    });
+  <p>A prospect can discover one of your properties through Google, social media, a referral, a marketplace or a shared link. The problem isn't necessarily getting that person to notice you. It's what happens next.</p>
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <ul class="plain">
+    <li>The property may live inside a marketplace listing, social post or WhatsApp forward with little room to build your own presence around it</li>
+    <li>The first enquiry is often just "Is this still available?" — with no useful context about budget, preferred location, needs or timeline</li>
+    <li>You end up doing the qualification yourself, message by message, before you know whether the prospect is actually a fit</li>
+    <li>Even interested prospects can lose momentum when property information, trust signals and the next step are scattered across different places</li>
+  </ul>
 
-    // Prevent an accidental dead-link click in the demo.
-    document.getElementById('paymentCta').addEventListener('click', (event) => {
-      if (event.currentTarget.getAttribute('href') === '#') {
-        event.preventDefault();
-        alert('Connect this button to your payment/checkout URL before publishing.');
-      }
-    });
-  </script>
+  <p>That doesn't mean the portals, social platforms or WhatsApp are bad. They're useful channels. The missing piece is having a conversion environment you control when that attention reaches you.</p>
+
+  <p style="text-align:center; margin: 32px 0;">
+    <a class="cta-inline" href="salespage.html" data-cta="pattern">See how the Lead Engine closes that gap →</a>
+  </p>
+
+  <h2>What the Lead Engine actually does</h2>
+
+  <p>It's not a corporate website, and it's not meant to replace one. If you already have a website, keep it for your company information, team, history and branding. The Lead Engine handles the property discovery and lead-conversion side.</p>
+
+  <p>The journey is simple: <strong>Discover → Trust → Qualify → Convert.</strong> Each stage removes a different piece of friction between seeing a property and starting a useful conversation with you.</p>
+
+  <ol class="stages">
+    <li>
+      <span class="stage-name">Discover</span>
+      <span class="stage-body">Property pages and search foundations designed to give your listings a proper destination beyond a disappearing post or forwarded message.</span>
+    </li>
+    <li>
+      <span class="stage-name">Trust</span>
+      <span class="stage-body">The property, your profile, relevant proof and useful information give a new prospect reasons to take you seriously before they contact you.</span>
+    </li>
+    <li>
+      <span class="stage-name">Qualify</span>
+      <span class="stage-body">The enquiry flow captures useful context such as budget, location, needs and timeline, so you're not starting every conversation from zero.</span>
+    </li>
+    <li>
+      <span class="stage-name">Convert</span>
+      <span class="stage-body">The right next step — usually a WhatsApp conversation or viewing request — becomes clear, with the prospect's captured context attached where appropriate.</span>
+    </li>
+  </ol>
+
+  <p>Eight modular pieces make this work:</p>
+
+  <ul class="pieces">
+    <li>A growth-focused property site</li>
+    <li>Search visibility setup</li>
+    <li>A trust-building agent profile</li>
+    <li>A structured property catalogue</li>
+    <li>The qualification logic</li>
+    <li>The WhatsApp handoff</li>
+    <li>A viewing and follow-up workflow</li>
+    <li>Basic tracking, so you can see where enquiries are coming from</li>
+  </ul>
+
+  <p>The important distinction is that these aren't eight unrelated website features. Together, they create a path: give the prospect somewhere useful to go, give them enough reason to trust you, learn what they're looking for, and make the handoff to you easier.</p>
+
+  <p>You can see the full breakdown and pricing for every piece on the page below — nothing is bundled or hidden.</p>
+
+  <div class="cta-wrap">
+    <a class="cta" href="salespage.html" data-cta="stages">See the full system breakdown</a>
+  </div>
+
+  <h2>Why the price is what it is right now</h2>
+
+  <p>Standalone, this system is worth ₦750,000. I'm not asking for that.</p>
+
+  <p>Because this is a founding cohort — five agents, full stop — I'm building this at ₦250,000. That's not a fake countdown or a made-up discount. I'm asking a small number of agents to be early implementations while I refine the system around real-world use. In return, you get the founding price.</p>
+
+  <div class="price-block">
+    <span class="was">₦720,000 standalone value</span>
+    <div class="now">₦247,000 — founding cohort</div>
+    <p>If the agreed implementation isn't delivered within the agreed window, I keep working at no extra implementation cost until the agreed scope is delivered. The guarantee is about delivery — not a promise that I can manufacture a sale.</p>
+  </div>
+
+  <h2>What I'm asking</h2>
+
+  <p>Not blind trust. I'm asking you to look at the actual system before deciding. See how the property side works. See how qualification and WhatsApp handoff fit together. See whether the offer solves a problem you actually recognize in your day-to-day lead handling.</p>
+
+  <p>And if you already have a corporate website or use Nigeria Property Centre, that doesn't automatically make this irrelevant. Your existing channels can still bring the attention. The Lead Engine gives that attention somewhere structured to go when the goal is turning interest into a useful enquiry or viewing.</p>
+
+  <blockquote>Five founding slots. Once they're gone, the founding price goes with them.</blockquote>
+
+  <div class="final">
+    <p class="signoff">— Joseph Anosike</p>
+
+    <p class="ps"><strong>P.S.</strong> If you only remember one thing: this isn't about replacing every channel you already use. It's about creating a better destination for the attention those channels already generate — one that can build trust, collect useful information and move the right prospects toward a conversation or viewing.</p>
+  </div>
+
+  <div class="final-cta">
+    <span class="count">5 founding slots · ₦247,000</span>
+    <h2>Continue to the offer</h2>
+    <a class="cta" id="offer" href="salespage.html" data-cta="final">Go to the full offer page</a>
+  </div>
+
+</div>
+
 </body>
 </html>
